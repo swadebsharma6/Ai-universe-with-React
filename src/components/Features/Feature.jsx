@@ -1,9 +1,14 @@
 import { ArrowRightCircleIcon, CalendarDaysIcon } from '@heroicons/react/24/solid';
 import React from 'react';
-const Feature = ({feature}) => {
+const Feature = ({feature, setUniqueId}) => {
     // console.log(feature);
-    const {name, published_in, image, description, features,} = feature;
-    console.log(features)
+    const {id, name, published_in, image, description, features,} = feature;
+    // console.log(feature)
+
+    const handleId =( id) =>{
+        console.log('handleID', id)
+    }
+
     return (
         <div className='m-5 border rounded-lg'>
         <div className="card p-4 w-full h-96 bg-base-100 shadow-xl">
@@ -12,7 +17,7 @@ const Feature = ({feature}) => {
           <h2 className="card-title font-bold text-black my-4">Features</h2>
           <div className='border-b-2 border-indigo-500 my-2 pb-3'>
           {
-            features.map((feature, idx) => <li className='font-normal'> {feature}</li> )
+            features.map((feature, idx) => <li key={idx} className='font-normal'> {feature}</li> )
           }
           </div>
           
@@ -26,8 +31,8 @@ const Feature = ({feature}) => {
               {published_in}</p>
            </div>
            </div>
-            <button className="">
-            <ArrowRightCircleIcon className='h-6 w-6 text-black'></ArrowRightCircleIcon>
+            <button onClick={()=>document.getElementById('my_modal_4').showModal()} className="">
+            <ArrowRightCircleIcon onClick={()=>setUniqueId(id)} className='h-6 w-6 text-black'></ArrowRightCircleIcon>
             </button>
           </div>
         </div>
